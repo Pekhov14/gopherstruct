@@ -1,88 +1,29 @@
 package main
 
-import "fmt"
-
-// TODO: write test for ll
-
-// Node TODO: Make with generics, not only int.
-type Node struct {
-	data int
-	next *Node
-}
-
-type linkedList struct {
-	head   *Node
-	length int
-}
-
-func (l linkedList) printData() {
-	toPrint := l.head
-
-	for l.length != 0 {
-		fmt.Printf("%d ", toPrint.data)
-		toPrint = toPrint.next
-		l.length--
-	}
-
-	fmt.Println("\n")
-}
-
-func (l *linkedList) prepend(n *Node) {
-	second := l.head
-	l.head = n
-	l.head.next = second
-	l.length++
-}
-
-func (l *linkedList) deleteByValue(value int) {
-	if l.length == 0 {
-		return
-	}
-
-	// delete head
-	if l.head.data == value {
-		l.head = l.head.next
-		l.length--
-		return
-	}
-
-	prevToDelete := l.head
-
-	for prevToDelete.next.data != value {
-		if prevToDelete.next.next == nil {
-			// value not found in ll
-			return
-		}
-
-		prevToDelete = prevToDelete.next
-	}
-	prevToDelete.next = prevToDelete.next.next
-	l.length--
-
-}
+import (
+	"gopherstruct/list"
+)
 
 func main() {
-	myList := linkedList{}
+	myList := list.LinkedList{}
 
-	nodeOne := &Node{data: 1}
+	nodeOne := &list.Node{Data: 1}
 
-	myList.prepend(nodeOne)
-	myList.prepend(&Node{data: 48})
-	myList.prepend(&Node{data: 18})
-	myList.prepend(&Node{data: 16})
-	myList.prepend(&Node{data: 11})
-	myList.prepend(&Node{data: 7})
-	myList.prepend(&Node{data: 2})
+	myList.Prepend(nodeOne)
+	myList.Prepend(&list.Node{Data: 48})
+	myList.Prepend(&list.Node{Data: 18})
+	myList.Prepend(&list.Node{Data: 16})
+	myList.Prepend(&list.Node{Data: 2})
 
-	myList.printData()
+	myList.PrintData()
 
 	// test cases
-	myList.deleteByValue(16)
-	myList.deleteByValue(100)
-	myList.deleteByValue(2)
+	myList.DeleteByValue(16)
+	myList.DeleteByValue(100)
+	myList.DeleteByValue(2)
 
-	emptyList := linkedList{}
-	emptyList.deleteByValue(10)
+	emptyList := list.LinkedList{}
+	emptyList.DeleteByValue(10)
 
-	myList.printData()
+	myList.PrintData()
 }
