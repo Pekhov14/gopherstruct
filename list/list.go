@@ -16,19 +16,34 @@ type LinkedList struct {
 }
 
 func (l LinkedList) PrintData() {
-	toPrint := l.head
+	if l.length == 0 {
+		return
+	}
 
-	for l.length != 0 {
+	toPrint := l.head
+	for i := 0; i < l.length; i++ {
 		fmt.Printf("%d ", toPrint.Data)
 		toPrint = toPrint.Next
-		l.length--
 	}
 
 	fmt.Println("\n")
 }
 
+func (l *LinkedList) PushBack(n *Node) {
+	if l.length == 0 {
+		l.head = n
+	} else {
+		current := l.head
+		for current.Next != nil {
+			current = current.Next
+		}
+		current.Next = n
+	}
+	l.length++
+}
+
 // maybe rename to push
-func (l *LinkedList) Prepend(n *Node) {
+func (l *LinkedList) PushFront(n *Node) {
 	second := l.head
 	l.head = n
 	l.head.Next = second
