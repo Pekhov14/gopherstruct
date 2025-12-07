@@ -7,7 +7,7 @@
 ## 📦 Data structures implemented in golang
 
 ### ✅ Ready
-- [x] **Linked List** - односвязный список с базовыми операциями
+- [x] **Linked List** - singly linked list with basic operations
 
 ### 📋 In plan
 - [ ] Stack
