@@ -28,17 +28,16 @@ func (l *LinkedList) removeByValue(value int) {
 		return
 	}
 
-	prevToRemove := l.head
+	prev := l.head
 
-	// prevToRemove.next is current node
-	for prevToRemove.next.data != value {
-		if prevToRemove.next.next == nil {
-			return
-		}
-
-		prevToRemove = prevToRemove.next
+	for prev.next != nil && prev.next.data != value {
+		prev = prev.next
 	}
 
-	prevToRemove.next = prevToRemove.next.next
+	if prev.next == nil {
+		return
+	}
+
+	prev.next = prev.next.next // remove current node and adjust pointers
 	l.lenth--
 }
