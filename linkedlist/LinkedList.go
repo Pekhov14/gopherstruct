@@ -38,6 +38,7 @@ func (l *LinkedList) removeByValue(value int) {
 		return
 	}
 
-	prev.next = prev.next.next // remove current node and adjust pointers
+	// unlink current node from the list
+	prev.next = prev.next.next
 	l.lenth--
 }
