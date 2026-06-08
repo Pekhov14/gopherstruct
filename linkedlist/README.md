@@ -26,9 +26,9 @@ type LinkedList struct {
 
 ```mermaid
 graph LR
-    head["head (pointer variable)
+    head["head (*Node)
       ┌─────────────┐ 
-       value: 0x1000 
+       points to: 0x1000 
       └─────────────┘
     "]
     
